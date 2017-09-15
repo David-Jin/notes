@@ -2,7 +2,7 @@
 记录一些平时学习时的一些心得和资料。
 
 
-Caffe学习之caffe具体运行流程分析
+###Caffe学习之caffe具体运行流程分析
 
 最近一段时间因实习需要，学习了一下caffe，在此陆陆续续记录一些和caffe相关的笔记。
 
@@ -11,10 +11,11 @@ Caffe学习之caffe具体运行流程分析
 ./build/tools/caffe train -solver xxx.prototxt 
 然后模型就跑起来了，但是具体程序的入口——main是哪个，执行的顺序是如何的可能不是特别清晰，为了更加理解caffe，在此对其流程做一个具体的分析。
 分析方法很简单，细看运行model之后的，输出的Log，比如在此运行lenet model：
- ./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt
+./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt
 
 
 你会得到如下Log：
+
 I0708 09:53:58.417726  3435 caffe.cpp:218] Using GPUs 0
 I0708 09:53:58.560006  3435 caffe.cpp:223] GPU 0: TITAN X (Pascal)
 I0708 09:54:01.458295  3435 solver.cpp:44] Initializing solver from parameters: 

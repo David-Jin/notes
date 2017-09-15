@@ -5,10 +5,11 @@
 最近一段时间因实习需要，学习了一下caffe，在此陆陆续续记录一些和caffe相关的笔记。
 
 我们都知道要运行一个caffe model的时候需要在命令行下输入：
-
-> ./build/tools/caffe train -solver xxx.prototxt 
+```
+./build/tools/caffe train -solver xxx.prototxt 
 然后模型就跑起来了，但是具体程序的入口——main是哪个，执行的顺序是如何的可能不是特别清晰，为了更加理解caffe，在此对其流程做一个具体的分析。分析方法很简单，细看运行model之后的，输出的Log，比如在此运行lenet model：
-> ./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt `
+./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt `
+```
 
 你会得到如下Log：
 ```
@@ -40,7 +41,7 @@ I0708 09:54:01.459230  3435 net.cpp:51] Initializing net from parameters:
 - step11: 运行结束
 可能有点绕，总结而言就是：
 
-1. 入口函数caffe.cpp main()(调用caffe.cpp train()) 
-2. caffe.cpp train()中 创建solver对象(调用solver.cpp Init()) 
-3. solver.cpp Init()中 solver.cpp InitTrainNet()和InitTestNets()创建训练网络和测试网络 
-4. 运行返回到caffe.cpp train()中，调用solver.cpp Solve()来训练网络，具体训练过程在solver.cpp Step()中实现，迭代直至程序结束
+1.  入口函数caffe.cpp main()(调用caffe.cpp train()) 
+2.  caffe.cpp train()中 创建solver对象(调用solver.cpp Init()) 
+3.  solver.cpp Init()中 solver.cpp InitTrainNet()和InitTestNets()创建训练网络和测试网络 
+4.  运行返回到caffe.cpp train()中，调用solver.cpp Solve()来训练网络，具体训练过程在solver.cpp Step()中实现，迭代直至程序结束

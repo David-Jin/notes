@@ -7,8 +7,9 @@
 我们都知道要运行一个caffe model的时候需要在命令行下输入：
 ```
 ./build/tools/caffe train -solver xxx.prototxt 
-然后模型就跑起来了，但是具体程序的入口——main是哪个，执行的顺序是如何的可能不是特别清晰，为了更加理解caffe，在此对其流程做一个具体的分析。分析方法很简单，细看运行model之后的，输出的Log，比如在此运行lenet model：
-./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt `
+然后模型就跑起来了，但是具体程序的入口——main是哪个，执行的顺序是如何的可能不是特别清晰，为了更加理解caffe，在此对其流程做一个具体的分析。
+分析方法很简单，细看运行model之后的，输出的Log，比如在此运行lenet model：
+./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt
 ```
 
 你会得到如下Log：
@@ -21,7 +22,6 @@ I0708 09:54:01.458588  3435 solver.cpp:87] Creating training net from net file: 
 I0708 09:54:01.459116  3435 net.cpp:294] The NetState phase (0) differed from the phase (1) specified by a rule in layer mnist
 I0708 09:54:01.459144  3435 net.cpp:294] The NetState phase (0) differed from the phase (1) specified by a rule in layer accuracy
 I0708 09:54:01.459230  3435 net.cpp:51] Initializing net from parameters:
-...
 ...
 ...
 ```
